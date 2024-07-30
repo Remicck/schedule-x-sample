@@ -17,12 +17,18 @@ importers:
       '@schedule-x/event-modal':
         specifier: ^1.54.0
         version: 1.54.0(@preact/signals@1.3.0(preact@10.23.1))(preact@10.23.1)
+      '@schedule-x/events-service':
+        specifier: ^1.55.0
+        version: 1.55.0
       '@schedule-x/react':
         specifier: ^1.52.0
         version: 1.52.0(@schedule-x/calendar@1.54.0(@preact/signals@1.3.0(preact@10.23.1))(preact@10.23.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@schedule-x/resize':
         specifier: ^1.54.0
         version: 1.54.0
+      '@schedule-x/shared':
+        specifier: ^1.55.0
+        version: 1.55.0
       '@schedule-x/theme-default':
         specifier: ^1.54.0
         version: 1.54.0
@@ -222,6 +228,9 @@ packages:
       '@preact/signals': ^1.1.5
       preact: ^10.19.2
 
+  '@schedule-x/events-service@1.55.0':
+    resolution: {integrity: sha512-RGcQDn/vlZiLJq3IQ89Jy1o0yDBZcYyxBPdsqJne7QInYz4No6rBWsbmk/m6oygBuwKdSpWviFDtW0MSHOUVUQ==}
+
   '@schedule-x/react@1.52.0':
     resolution: {integrity: sha512-kfhd2XUL7BQ+PkVGczXbCJUl7hJA5Bj6JHcvZWaBZQdAR5GsY15F/RbeQEBXicrBVg/LcD37W2lEEZvVW163mg==}
     peerDependencies:
@@ -231,6 +240,9 @@ packages:
 
   '@schedule-x/resize@1.54.0':
     resolution: {integrity: sha512-QMDL8x5oy71JQn4veWeppRxtPM+cWBzxZgscJL3rmVzZa/6Z0JDkODMiQz5eEqQ7JHZ99houYr4zrFnk7PfoxA==}
+
+  '@schedule-x/shared@1.55.0':
+    resolution: {integrity: sha512-CA5WIoXdXOFvcZgPQ9kOw6w/SE7Jgd6vE6+PARBnI0WsNQ1s+JVB3o9M8lyEUBS04lJU7Mgdc5xeaa1j0v8HyQ==}
 
   '@schedule-x/theme-default@1.54.0':
     resolution: {integrity: sha512-3J3iCr/lKVqru1p1sIXvM/EyoZEuuD2ItQR1wQioA8npMuAsp7IuBFwFBxALj46CGqprI9/py3hT4G7ghx1lbg==}
@@ -1706,6 +1718,8 @@ snapshots:
       '@preact/signals': 1.3.0(preact@10.23.1)
       preact: 10.23.1
 
+  '@schedule-x/events-service@1.55.0': {}
+
   '@schedule-x/react@1.52.0(@schedule-x/calendar@1.54.0(@preact/signals@1.3.0(preact@10.23.1))(preact@10.23.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@schedule-x/calendar': 1.54.0(@preact/signals@1.3.0(preact@10.23.1))(preact@10.23.1)
@@ -1713,6 +1727,8 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@schedule-x/resize@1.54.0': {}
+
+  '@schedule-x/shared@1.55.0': {}
 
   '@schedule-x/theme-default@1.54.0': {}
 
@@ -2177,7 +2193,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.35.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -2201,7 +2217,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.0
@@ -2223,7 +2239,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
