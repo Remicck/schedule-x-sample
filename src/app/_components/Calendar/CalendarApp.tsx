@@ -9,6 +9,8 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import { createEventModalPlugin } from '@schedule-x/event-modal'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { createResizePlugin } from '@schedule-x/resize'
+import { formatDateToString, getNearestHalfHour, stringDatetimeToDate } from '@/app/_components/Calendar/util'
+import { addMinutes } from 'date-fns'
 
 const eventsServicePlugin = createEventsServicePlugin()
 class LoggerPlugin {
@@ -56,6 +58,17 @@ function Calendar() {
 
       onClickDateTime(dateTime) {
         console.log('onClickDateTime', dateTime)
+        const D = stringDatetimeToDate(dateTime)
+        const startDatetime = getNearestHalfHour(D)
+        const endDatetime = addMinutes(startDatetime, 30)
+             
+        const id = Math.floor(Math.random() * 100000).toString()
+        eventsServicePlugin.add({
+          id: Math.floor(Math.random() * 100000).toString(),
+          title: `New event ${id}`,
+          start: formatDateToString(startDatetime),
+          end: formatDateToString(endDatetime),
+        })
       },
 
       onClickAgendaDate(date) {
@@ -111,3 +124,4 @@ function Calendar() {
 }
 
 export default Calendar
+

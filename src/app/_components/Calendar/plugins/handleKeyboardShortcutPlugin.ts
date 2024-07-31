@@ -12,6 +12,11 @@ class HandleKeyboardShortcutPlugin {
     if (this.$app.config.views.length > 0) {
       this.views = this.$app.config.views.map((view) => view.name)
     }
+    this.keyboardShortcutRegister();
+  }
+
+  keyboardShortcutRegister() {
+    console.log('register process');
   }
 
   checkViews(): void {
