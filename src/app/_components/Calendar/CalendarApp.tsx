@@ -1,4 +1,5 @@
-import { useNextCalendarApp, ScheduleXCalendar } from '@schedule-x/react'
+'use client';
+import { ScheduleXCalendar, useCalendarApp } from '@schedule-x/react'
 import {
   viewWeek,
   viewDay,
@@ -25,23 +26,56 @@ class LoggerPlugin {
   }
 }
 function Calendar() {
-  const calendar = useNextCalendarApp({
+  const calendar = useCalendarApp({
     locale: 'ja-JP',
-    defaultView: viewWeek.name,
+    defaultView: viewMonthGrid.name,
     isResponsive: true,
     plugins: [createDragAndDropPlugin(), createResizePlugin(), createEventModalPlugin(), eventsServicePlugin, new LoggerPlugin()],
     views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
     callbacks: {
-      onEventUpdate (event ) {console.log(event)},
-      onEventClick (event )  {console.log(event)},
-      onRangeUpdate (range )  {console.log(range)},
-      onSelectedDateUpdate (date: string)  {console.log(date)},
-      onClickDate (date: string)  {console.log(date)},
-      onDoubleClickDate (date: string)  {console.log(date)},
-      onClickDateTime (dateTime: string)  {console.log(dateTime)},
-      onDoubleClickDateTime (dateTime: string)  {console.log(dateTime)},
-      onClickAgendaDate (date: string)  {console.log(date)},
-      onClickPlusEvents (date: string)  {console.log(date)},
+      onRangeUpdate(range) {
+        console.log('onRangeUpdate', range)
+      },
+  
+      onEventUpdate(event) {
+        console.log('onEventUpdate', event)
+      },
+  
+      onEventClick(event) {
+        console.log('onEventClick', event)
+      },
+  
+      onClickDate(date) {
+        console.log('onClickDate', date)
+      },
+  
+      onClickDateTime(dateTime) {
+        console.log('onClickDateTime', dateTime)
+      },
+  
+      onClickAgendaDate(date) {
+        console.log('onClickAgendaDate', date)
+      },
+  
+      onClickPlusEvents(date) {
+        console.log('onClickPlusEvents', date)
+      },
+  
+      onSelectedDateUpdate(date) {
+        console.log('onSelectedDateUpdate', date)
+      },
+  
+      onDoubleClickDateTime(dateTime) {
+        console.log('onDoubleClickDateTime', dateTime)
+      },
+  
+      onDoubleClickDate(date) {
+        console.log('onDoubleClickDate', date)
+      },
+      //
+      // isCalendarSmall($app) {
+      //   return $app.elements.calendarWrapper!.clientWidth! < 500
+      // }
     },
     events: [
       {
