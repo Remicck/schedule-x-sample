@@ -1,27 +1,27 @@
-import type { CalendarAppSingleton } from '@schedule-x/shared'
+import type { CalendarAppSingleton } from "@schedule-x/shared";
 
 class HandleKeyboardShortcutPlugin {
-  name = 'calendars-updater'
-  $app!: CalendarAppSingleton
-  views: string[] = []
+  name = "calendars-updater";
+  $app!: CalendarAppSingleton;
+  views: string[] = [];
 
   destroy(): void {}
 
   init($app: CalendarAppSingleton): void {
-    this.$app = $app
+    this.$app = $app;
     if (this.$app.config.views.length > 0) {
-      this.views = this.$app.config.views.map((view) => view.name)
+      this.views = this.$app.config.views.map((view) => view.name);
     }
     this.keyboardShortcutRegister();
   }
 
   keyboardShortcutRegister() {
-    console.log('register process');
+    console.log("register process");
   }
 
   checkViews(): void {
-    console.log(this.$app)
-    console.log('view list', this.views)
+    console.log(this.$app);
+    console.log("view list", this.views);
   }
 
   // updateCalendars(): void {
@@ -43,4 +43,4 @@ class HandleKeyboardShortcutPlugin {
   //   }
   // }
 }
-export const handleKeyboardShortcutPlugin = new HandleKeyboardShortcutPlugin()
+export const handleKeyboardShortcutPlugin = new HandleKeyboardShortcutPlugin();

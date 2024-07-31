@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "npx @biomejs/biome check --write ./src"
+    "format": "npx @biomejs/biome check --fix --unsafe ./src"
   },
   "dependencies": {
     "@schedule-x/calendar": "^1.54.0",

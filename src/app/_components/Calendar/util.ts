@@ -1,18 +1,24 @@
 // string to Date (from YYYY-MM-DD HH:ii)
 
-import { addMinutes, format, isAfter, parse, setMilliseconds, setMinutes, setSeconds } from "date-fns";
+import {
+  addMinutes,
+  format,
+  parse,
+  setMilliseconds,
+  setSeconds,
+} from "date-fns";
 
 /**
  * YYYY-MM-DD HH:ii形式のstringを、Date型に変換する
  * @param datestring YYYY-MM-DD HH:ii形式のstring
- * @returns 
+ * @returns
  */
 export const stringDatetimeToDate = (datestring: string): Date => {
   // date-fnsを使い、formatする
-  const formatString = 'yyyy-MM-dd HH:mm';
+  const formatString = "yyyy-MM-dd HH:mm";
   const parsedDate = parse(datestring, formatString, new Date());
   return parsedDate;
-}
+};
 
 /**
  * 与えられたDate型の日時から、直近の0分または30分に設定した日時を返す
@@ -33,8 +39,7 @@ export const getNearestHalfHour = (date: Date): Date => {
   updatedDate = addMinutes(updatedDate, -remainder);
 
   return updatedDate;
-}
-
+};
 
 /**
  * Date型をYYYY-MM-DD HH:mm形式の文字列に変換する関数
@@ -42,5 +47,5 @@ export const getNearestHalfHour = (date: Date): Date => {
  * @returns - YYYY-MM-DD HH:mm形式の文字列
  */
 export const formatDateToString = (date: Date): string => {
-    return format(date, 'yyyy-MM-dd HH:mm');
-}
+  return format(date, "yyyy-MM-dd HH:mm");
+};
