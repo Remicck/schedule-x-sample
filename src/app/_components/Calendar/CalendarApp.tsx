@@ -1,6 +1,6 @@
 'use client'
 import { viewDay, viewMonthAgenda, viewMonthGrid, viewWeek } from '@schedule-x/calendar'
-import { ScheduleXCalendar, useCalendarApp } from '@schedule-x/react'
+import { ScheduleXCalendar, useNextCalendarApp } from '@schedule-x/react'
 import type { CalendarAppSingleton } from '@schedule-x/shared'
 
 import '@schedule-x/theme-default/dist/index.css'
@@ -22,7 +22,7 @@ class LoggerPlugin {
   }
 }
 function Calendar() {
-  const calendar = useCalendarApp({
+  const calendar = useNextCalendarApp({
     locale: 'ja-JP',
     defaultView: viewMonthGrid.name,
     isResponsive: true,
@@ -51,6 +51,7 @@ function Calendar() {
 
       onClickDate(date) {
         console.log('onClickDate', date)
+        addEvent(date)
       },
 
       onClickDateTime(dateTime) {
@@ -90,6 +91,17 @@ function Calendar() {
       },
     ],
   })
+
+  const addEvent = (date: string) => {
+    console.log('method', date)
+    const id = Math.floor(Math.random() * 100000).toString()
+    eventsServicePlugin.add({
+      id: Math.floor(Math.random() * 100000).toString(),
+      title: `New event ${id}`,
+      start: date,
+      end: date,
+    })
+  }
 
   return (
     <div className="w-full">
