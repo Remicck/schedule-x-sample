@@ -9,6 +9,7 @@ import { ScheduleXCalendar, useNextCalendarApp } from "@schedule-x/react";
 import type { CalendarAppSingleton } from "@schedule-x/shared";
 
 import "@schedule-x/theme-default/dist/index.css";
+import { ScheduleEditDialog } from "@/app/_components/Calendar/ScheduleEditDialog";
 import { handleKeyboardShortcutPlugin } from "@/app/_components/Calendar/plugins/handleKeyboardShortcutPlugin";
 import {
   formatDateToString,
@@ -20,6 +21,7 @@ import { createEventModalPlugin } from "@schedule-x/event-modal";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 import { createResizePlugin } from "@schedule-x/resize";
 import { addMinutes } from "date-fns";
+import { useState } from "react";
 
 const eventsServicePlugin = createEventsServicePlugin();
 class LoggerPlugin {
@@ -33,6 +35,8 @@ class LoggerPlugin {
   }
 }
 function Calendar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const calendar = useNextCalendarApp({
     locale: "ja-JP",
     defaultView: viewMonthGrid.name,
@@ -66,6 +70,8 @@ function Calendar() {
       },
 
       onClickDateTime(dateTime) {
+        setIsOpen(true);
+
         console.log("onClickDateTime", dateTime);
         const D = stringDatetimeToDate(dateTime);
         const startDatetime = getNearestHalfHour(D);
@@ -115,6 +121,7 @@ function Calendar() {
   });
 
   const addEvent = (date: string) => {
+    setIsOpen(true);
     console.log("method", date);
     const id = Math.floor(Math.random() * 100000).toString();
     eventsServicePlugin.add({
@@ -128,9 +135,12 @@ function Calendar() {
     console.log("events", eventsServicePlugin.getAll());
   };
 
+  console.log("parent component", isOpen);
+
   return (
     <div className="h-full w-full">
       <ScheduleXCalendar calendarApp={calendar} />
+      <ScheduleEditDialog id="1" isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }
