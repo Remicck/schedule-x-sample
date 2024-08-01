@@ -16,6 +16,7 @@ import {
   getNearestHalfHour,
   stringDatetimeToDate,
 } from "@/app/_components/Calendar/util";
+import { createCalendarControlsPlugin } from "@schedule-x/calendar-controls";
 import { createDragAndDropPlugin } from "@schedule-x/drag-and-drop";
 import { createEventModalPlugin } from "@schedule-x/event-modal";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
@@ -23,6 +24,7 @@ import { createResizePlugin } from "@schedule-x/resize";
 import { addMinutes } from "date-fns";
 import { useState } from "react";
 
+const calendarControls = createCalendarControlsPlugin();
 const eventsServicePlugin = createEventsServicePlugin();
 class LoggerPlugin {
   name = "logger-plugin";
@@ -46,8 +48,9 @@ function Calendar() {
       createResizePlugin(),
       createEventModalPlugin(),
       eventsServicePlugin,
-      new LoggerPlugin(),
+      calendarControls,
       handleKeyboardShortcutPlugin,
+      new LoggerPlugin(),
     ],
     views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
     callbacks: {
@@ -61,7 +64,6 @@ function Calendar() {
 
       onEventClick(event) {
         console.log("onEventClick", event);
-        handleKeyboardShortcutPlugin.checkViews();
       },
 
       onClickDate(date) {

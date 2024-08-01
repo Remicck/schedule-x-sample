@@ -1,9 +1,16 @@
 import type { CalendarAppSingleton } from "@schedule-x/shared";
+import hotkeys from "hotkeys-js";
 
 class HandleKeyboardShortcutPlugin {
   name = "calendars-updater";
   $app!: CalendarAppSingleton;
   views: string[] = [];
+  viewHotkeyMap: Record<string, string> = {
+    d: "day",
+    w: "week",
+    m: "month-grid",
+    a: "month-agenda",
+  };
 
   destroy(): void {}
 
@@ -16,31 +23,20 @@ class HandleKeyboardShortcutPlugin {
   }
 
   keyboardShortcutRegister() {
-    console.log("register process");
-  }
+    console.log("register process", this.views);
 
-  checkViews(): void {
-    console.log(this.$app);
-    console.log("view list", this.views);
-  }
+    for (const key of Object.keys(this.viewHotkeyMap)) {
+      const viewName = this.viewHotkeyMap[key];
+      if (this.views.includes(viewName)) {
+        hotkeys(key, (event, _handler) => {
+          event.preventDefault();
 
-  // updateCalendars(): void {
-  //   this.$app.config.calendars.value = {
-  //     ...this.$app.config.calendars.value,
-  //     personal: {
-  //       colorName: 'personal',
-  //       lightColors: {
-  //         main: 'yellow',
-  //         container: '#000',
-  //         onContainer: 'yellow',
-  //       },
-  //       darkColors: {
-  //         main: '#fff5c0',
-  //         onContainer: '#fff5de',
-  //         container: '#a29742',
-  //       },
-  //     },
-  //   }
-  // }
+          console.log("dou1?", this.$app.config);
+          // @ts-expect-error
+          this.$app.config.plugins.calendarControls.setView(viewName);
+        });
+      }
+    }
+  }
 }
 export const handleKeyboardShortcutPlugin = new HandleKeyboardShortcutPlugin();
