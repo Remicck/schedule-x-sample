@@ -23,15 +23,11 @@ class HandleKeyboardShortcutPlugin {
   }
 
   keyboardShortcutRegister() {
-    console.log("register process", this.views);
-
     for (const key of Object.keys(this.viewHotkeyMap)) {
       const viewName = this.viewHotkeyMap[key];
       if (this.views.includes(viewName)) {
         hotkeys(key, (event, _handler) => {
           event.preventDefault();
-
-          console.log("dou1?", this.$app.config);
           // @ts-expect-error
           this.$app.config.plugins.calendarControls.setView(viewName);
         });
