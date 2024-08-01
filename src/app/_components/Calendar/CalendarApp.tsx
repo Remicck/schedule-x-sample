@@ -129,7 +129,7 @@ function Calendar() {
   };
 
   return (
-    <div className="w-full">
+    <div className="h-full w-full">
       <ScheduleXCalendar calendarApp={calendar} />
     </div>
   );
