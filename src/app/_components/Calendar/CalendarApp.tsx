@@ -68,7 +68,8 @@ function Calendar() {
 
       onClickDate(date) {
         console.log("onClickDate", date);
-        addEvent(date);
+        setIsOpen(true);
+        // addEvent(date);
       },
 
       onClickDateTime(dateTime) {
@@ -122,27 +123,33 @@ function Calendar() {
     ],
   });
 
-  const addEvent = (date: string) => {
-    setIsOpen(true);
-    console.log("method", date);
+  const addEvent = (
+    title: string,
+    description: string,
+    start: string,
+    end: string,
+  ) => {
     const id = Math.floor(Math.random() * 100000).toString();
     eventsServicePlugin.add({
       id,
-      title: `New event ${id}`,
-      start: date,
-      end: date,
+      title: title,
+      start: start,
+      end: end,
       specialProperty: `id: ${id}\nこれが特別なプロパティです`,
-      description: `id: ${id}\nこちらは説明プロパティです`,
+      description: description,
     });
     console.log("events", eventsServicePlugin.getAll());
   };
 
-  console.log("parent component", isOpen);
-
   return (
     <div className="h-full w-full">
       <ScheduleXCalendar calendarApp={calendar} />
-      <ScheduleEditDialog id="1" isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ScheduleEditDialog
+        id="1"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        addEvent={addEvent}
+      />
     </div>
   );
 }
